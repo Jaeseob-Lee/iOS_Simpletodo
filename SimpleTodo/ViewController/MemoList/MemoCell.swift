@@ -10,7 +10,7 @@ import UIKit
 
 class MemoCell: UITableViewCell {
 
-    @IBOutlet weak var contentsCell: UILabel!
+    @IBOutlet weak var contentLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,5 +22,8 @@ class MemoCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
+    func configure(with content: String) {
+        self.contentLabel.text = content
+    }
 }
