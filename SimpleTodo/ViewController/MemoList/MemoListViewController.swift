@@ -18,6 +18,7 @@ class MemoListViewController: UIViewController {
         super.viewDidLoad()
         
         setupUI()
+        loadAll()
     }
     
     private func setupUI() {
@@ -27,16 +28,43 @@ class MemoListViewController: UIViewController {
     
     @IBAction func addMemo(_ sender: UIBarButtonItem) {
         if let naviVC = storyboard?.instantiateViewController(withIdentifier: MemoComposeViewController.reuseIdentifier) as? UINavigationController, let composeVC = naviVC.viewControllers.first as? MemoComposeViewController {
-            composeVC.addHandler = {
-                memo in
+            composeVC.addHandler = { memo in
                 print(memo)
                 self.memos.insert(memo, at: 0)
+                self.saveAll()
                 self.tableView.reloadData()
             }
             self.present(naviVC, animated: true, completion: nil)
         }
     }
-
+    
+    func saveAll() {
+        let data = memos.map { memo in
+            [
+                "content" : memo.content,
+                "insertDate" : memo.date
+            ]
+        }
+        
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(data, forKey: UserDefaultsKey.memoList)
+        userDefaults.synchronize()
+    }
+    
+    func loadAll() {
+        let userDefaults = UserDefaults.standard
+        guard let data = userDefaults.object(forKey: UserDefaultsKey.memoList) as? [[String : Any]] else {
+            return
+        }
+        
+        memos = data.map { memo in
+            let content = memo["content"] as? String ?? ""
+            let insertDate = memo["insertDate"] as? Date ?? Date()
+            
+            return Memo(content: content, date: insertDate)
+        }
+    }
+    
 }
 
 extension MemoListViewController: UITableViewDataSource {
