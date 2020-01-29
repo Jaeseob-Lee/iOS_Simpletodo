@@ -68,6 +68,7 @@ class MemoListViewController: UIViewController {
 }
 
 extension MemoListViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return memos.count
     }
@@ -81,8 +82,17 @@ extension MemoListViewController: UITableViewDataSource {
         
         return cell
     }
+    
 }
 
 extension MemoListViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let detailVC = storyboard?.instantiateViewController(withIdentifier: MemoDetailViewController.reuseIdentifier) as? MemoDetailViewController {
+//            detailVC.memo = memos[indexPath.row]
+            detailVC.configure(with: memos[indexPath.row], indexPath: indexPath)
+            navigationController?.pushViewController(detailVC, animated: true)
+        }
+    }
     
 }

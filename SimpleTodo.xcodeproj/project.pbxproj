@@ -17,6 +17,9 @@
 		74E2682C23D6B08F000A5B60 /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E2682B23D6B08F000A5B60 /* Memo.swift */; };
 		74E2683023D6BDDD000A5B60 /* CommonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E2682F23D6BDDD000A5B60 /* CommonExtension.swift */; };
 		74E2683223D81042000A5B60 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E2683123D81042000A5B60 /* Constant.swift */; };
+		74E2685723D93D29000A5B60 /* MemoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E2685623D93D29000A5B60 /* MemoDetailViewController.swift */; };
+		74E2685B23D9462C000A5B60 /* ContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E2685A23D9462C000A5B60 /* ContentCell.swift */; };
+		74E2685D23D94648000A5B60 /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E2685C23D94648000A5B60 /* DateCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,9 @@
 		74E2682B23D6B08F000A5B60 /* Memo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = SOURCE_ROOT; };
 		74E2682F23D6BDDD000A5B60 /* CommonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonExtension.swift; sourceTree = "<group>"; };
 		74E2683123D81042000A5B60 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		74E2685623D93D29000A5B60 /* MemoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoDetailViewController.swift; sourceTree = "<group>"; };
+		74E2685A23D9462C000A5B60 /* ContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCell.swift; sourceTree = "<group>"; };
+		74E2685C23D94648000A5B60 /* DateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +93,7 @@
 			children = (
 				74B8A2AB23D58CDE00F31583 /* MemoCompose */,
 				74CB7AC323D18F6A001F1319 /* MemoList */,
+				74E2685523D93CED000A5B60 /* MemoDetail */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -125,6 +132,16 @@
 				74E2683123D81042000A5B60 /* Constant.swift */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		74E2685523D93CED000A5B60 /* MemoDetail */ = {
+			isa = PBXGroup;
+			children = (
+				74E2685623D93D29000A5B60 /* MemoDetailViewController.swift */,
+				74E2685A23D9462C000A5B60 /* ContentCell.swift */,
+				74E2685C23D94648000A5B60 /* DateCell.swift */,
+			);
+			path = MemoDetail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,10 +216,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				74E2683223D81042000A5B60 /* Constant.swift in Sources */,
+				74E2685D23D94648000A5B60 /* DateCell.swift in Sources */,
+				74E2685723D93D29000A5B60 /* MemoDetailViewController.swift in Sources */,
 				74CB7ABF23D18E82001F1319 /* MemoListViewController.swift in Sources */,
 				74B8A2AD23D58D0C00F31583 /* MemoComposeViewController.swift in Sources */,
 				74CB7AAB23D18B8A001F1319 /* AppDelegate.swift in Sources */,
 				74B8A2AA23D58AB900F31583 /* MemoCell.swift in Sources */,
+				74E2685B23D9462C000A5B60 /* ContentCell.swift in Sources */,
 				74E2683023D6BDDD000A5B60 /* CommonExtension.swift in Sources */,
 				74E2682C23D6B08F000A5B60 /* Memo.swift in Sources */,
 			);
