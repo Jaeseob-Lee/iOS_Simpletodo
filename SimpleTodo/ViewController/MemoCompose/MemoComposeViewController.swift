@@ -12,12 +12,14 @@ class MemoComposeViewController: UIViewController {
 
     @IBOutlet weak var contentView: UITextView!
     
+    private var memo: Memo?
+    
     // ((넘길 데이터) -> Void)?
     var addHandler: ((Memo) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        contentView.text = memo?.content
     }
     
     @IBAction func dismiss(_ sender: UIBarButtonItem) {
@@ -40,4 +42,7 @@ class MemoComposeViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    func configure(with memo: Memo) {
+        self.memo = memo
+    }
 }

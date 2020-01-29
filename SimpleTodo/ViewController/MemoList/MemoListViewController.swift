@@ -14,11 +14,36 @@ class MemoListViewController: UIViewController {
     
     var memos: [Memo] = []
     
+    // view가 로드 되었을때 (viewDidLoad는 한번만 호출된다)
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print("List viewDidLoad")
         setupUI()
         loadAll()
+    }
+    
+    // view가 나타나기전에
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("List viewWillAppear")
+    }
+    
+    // view가 나타났을때
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("List viewDidAppear")
+    }
+    
+    // view가 없어지기전에
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        print("List viewWillDisappear")
+    }
+    
+    // view가 없어졌을때
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        print("List viewDidDisappear")
     }
     
     private func setupUI() {
@@ -29,7 +54,6 @@ class MemoListViewController: UIViewController {
     @IBAction func addMemo(_ sender: UIBarButtonItem) {
         if let naviVC = storyboard?.instantiateViewController(withIdentifier: MemoComposeViewController.reuseIdentifier) as? UINavigationController, let composeVC = naviVC.viewControllers.first as? MemoComposeViewController {
             composeVC.addHandler = { memo in
-                print(memo)
                 self.memos.insert(memo, at: 0)
                 self.saveAll()
                 self.tableView.reloadData()
@@ -90,7 +114,20 @@ extension MemoListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let detailVC = storyboard?.instantiateViewController(withIdentifier: MemoDetailViewController.reuseIdentifier) as? MemoDetailViewController {
 //            detailVC.memo = memos[indexPath.row]
-            detailVC.configure(with: memos[indexPath.row], indexPath: indexPath)
+            detailVC.configure(with: memos[indexPath.row], at: indexPath)
+            
+            detailVC.deleteHandler = { indexPath in
+                self.memos.remove(at: indexPath.row)
+                self.saveAll()
+                self.tableView.reloadData()
+            }
+            
+            detailVC.editHandler = { memo, indexPath in
+                self.memos[indexPath.row] = memo
+                self.saveAll()
+                self.tableView.reloadData()
+            }
+            
             navigationController?.pushViewController(detailVC, animated: true)
         }
     }

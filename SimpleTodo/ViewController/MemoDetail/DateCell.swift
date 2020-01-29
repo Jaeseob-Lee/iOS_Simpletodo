@@ -34,15 +34,15 @@ class DateCell: UITableViewCell {
 
     }
     
-    func configure(with memo: Memo?) {
-        guard let memo = memo else { return }
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .medium
-        formatter.locale = Locale(identifier: "Ko_kr")
-//        formatter.string(from: memo.date)
-        
-//        self.dateLabel.text = "\(memo.date)"
-        self.dateLabel.text = formatter.string(from: memo.date)
-    }
+//    func configure(with memo: Memo?) {
+//        guard let memo = memo else { return }
+//        let formatter = DateFormatter()
+//        formatter.dateStyle = .medium
+//        formatter.timeStyle = .medium
+//        formatter.locale = Locale(identifier: "Ko_kr")
+////        formatter.string(from: memo.date)
+////
+////        self.dateLabel.text = "\(memo.date)"
+//        self.dateLabel.text = formatter.string(from: memo.date)
+//    }
 }
